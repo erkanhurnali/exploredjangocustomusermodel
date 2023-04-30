@@ -5,7 +5,7 @@ from django.utils import timezone
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
         if not email:
-            raise ValueError("You have not provided a valid e-mail address")
+            raise ValueError("Bir e-posta adresi sağlanmadı")
         
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
@@ -42,8 +42,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        verbose_name = 'Kullanıcı'
+        verbose_name_plural = 'Kullanıcı Yönetimi'
     
     def get_full_name(self):
         return self.name
